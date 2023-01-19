@@ -1,0 +1,346 @@
+Last login: Mon Jan 16 12:35:54 on ttys000
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+L-W4PWN9XC2K:~ venkatateja$ /Library/PostgreSQL/15/scripts/runpsql.sh; exit
+Server [localhost]: 
+Database [postgres]: 
+Port [5432]: 
+Username [postgres]: 
+Password for user postgres: 
+psql (15.1)
+Type "help" for help.
+
+postgres=# \c dbfinserv;
+You are now connected to database "dbfinserv" as user "postgres".
+
+
+dbfinserv=# \l
+
+                                            List of databases
+   Name    |  Owner   | Encoding | Collate | Ctype | ICU Locale | Locale Provider |   Access privileges   
+-----------+----------+----------+---------+-------+------------+-----------------+-----------------------
+ dbfinserv | postgres | UTF8     | C       | C     |            | libc            | 
+ postgres  | postgres | UTF8     | C       | C     |            | libc            | 
+ template0 | postgres | UTF8     | C       | C     |            | libc            | =c/postgres          +
+           |          |          |         |       |            |                 | postgres=CTc/postgres
+ template1 | postgres | UTF8     | C       | C     |            | libc            | =c/postgres          +
+           |          |          |         |       |            |                 | postgres=CTc/postgres
+(4 rows)
+
+dbfinserv=# \d
+          List of relations
+ Schema |   Name   | Type  |  Owner   
+--------+----------+-------+----------
+ public | employee | table | postgres
+(1 row)
+
+
+
+dbfinserv=# create table department( id int primary key not null , dept char(50) not null,eid int not null);
+CREATE TABLE
+                                                    ^
+dbfinserv=# create table company( id int primary key not null,name text not null,age int not null,address char(50),salary real,join_date date);
+CREATE TABLE
+dbfinserv=# INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY,JOIN_DATE) VALUES (1, 'Paul', 32, 'California', 20000.00,'2001-07-13');
+INSERT 0 1
+dbfinserv=# INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,JOIN_DATE) VALUES (2, 'Allen', 25, 'Texas', '2007-12-13');
+INSERT 0 1
+dbfinserv=# INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY,JOIN_DATE) VALUES (4, 'Mark', 25, 'Rich-Mond ', 65000.00, '2007-12-13' ), (5, 'David', 27, 'Texas', 85000.00, '2007-12-13');
+INSERT 0 2
+
+dbfinserv=# select * from company;
+ id | name  | age |                      address                       | salary | join_date  
+----+-------+-----+----------------------------------------------------+--------+------------
+  1 | Paul  |  32 | California                                         |  20000 | 2001-07-13
+  2 | Allen |  25 | Texas                                              |        | 2007-12-13
+  4 | Mark  |  25 | Rich-Mond                                          |  65000 | 2007-12-13
+  5 | David |  27 | Texas                                              |  85000 | 2007-12-13
+(4 rows)
+
+dbfinserv=# INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY,JOIN_DATE) VALUES (3, 'Teddy', 23, 'Norway', 20000.00, DEFAULT );
+INSERT 0 1
+
+dbfinserv=# select * from company;
+ id | name  | age |                      address                       | salary | join_date  
+----+-------+-----+----------------------------------------------------+--------+------------
+  1 | Paul  |  32 | California                                         |  20000 | 2001-07-13
+  2 | Allen |  25 | Texas                                              |        | 2007-12-13
+  4 | Mark  |  25 | Rich-Mond                                          |  65000 | 2007-12-13
+  5 | David |  27 | Texas                                              |  85000 | 2007-12-13
+  3 | Teddy |  23 | Norway                                             |  20000 | 
+(5 rows)
+
+dbfinserv=# \d
+           List of relations
+ Schema |    Name    | Type  |  Owner   
+--------+------------+-------+----------
+ public | company    | table | postgres
+ public | department | table | postgres
+(2 rows)
+
+
+                                             ^
+dbfinserv=# insert into department (id,dept,eid) values (1,'it billing',1);
+INSERT 0 1
+dbfinserv=# insert into department (id,dept,eid) values (2,'engineering',2);
+INSERT 0 1
+dbfinserv=# insert into department (id,dept,eid) values (3,'finance',7);
+INSERT 0 1
+
+               ^
+dbfinserv=# select * from company where salary=10000;
+ id | name | age | address | salary | join_date 
+----+------+-----+---------+--------+-----------
+(0 rows)
+
+
+
+dbfinserv=# select * from company where salary>10000;
+ id | name  | age |                      address                       | salary | join_date  
+----+-------+-----+----------------------------------------------------+--------+------------
+  1 | Paul  |  32 | California                                         |  20000 | 2001-07-13
+  4 | Mark  |  25 | Rich-Mond                                          |  65000 | 2007-12-13
+  5 | David |  27 | Texas                                              |  85000 | 2007-12-13
+  3 | Teddy |  23 | Norway                                             |  20000 | 
+(4 rows)
+
+
+
+dbfinserv=# select count(*) as records from company;
+ records 
+---------
+       5
+(1 row)
+
+
+
+dbfinserv=# begin;
+BEGIN
+dbfinserv=*# delete from company where age=25;
+DELETE 2
+dbfinserv=*# rollback;
+ROLLBACK
+dbfinserv=# select * from company;
+ id | name  | age |                      address                       | salary | join_date  
+----+-------+-----+----------------------------------------------------+--------+------------
+  1 | Paul  |  32 | California                                         |  20000 | 2001-07-13
+  2 | Allen |  25 | Texas                                              |        | 2007-12-13
+  4 | Mark  |  25 | Rich-Mond                                          |  65000 | 2007-12-13
+  5 | David |  27 | Texas                                              |  85000 | 2007-12-13
+  3 | Teddy |  23 | Norway                                             |  20000 | 
+(5 rows)
+
+
+
+
+dbfinserv=# begin;
+BEGIN
+dbfinserv=*# insert into company(id,name,age,address,salary,join_date) values(6,'kim',22,'south-hall',45000,'2008-12-13');
+INSERT 0 1
+dbfinserv=*# commit;
+COMMIT
+dbfinserv=# select * from company;
+ id | name  | age |                      address                       | salary | join_date  
+----+-------+-----+----------------------------------------------------+--------+------------
+  1 | Paul  |  32 | California                                         |  20000 | 2001-07-13
+  2 | Allen |  25 | Texas                                              |        | 2007-12-13
+  4 | Mark  |  25 | Rich-Mond                                          |  65000 | 2007-12-13
+  5 | David |  27 | Texas                                              |  85000 | 2007-12-13
+  3 | Teddy |  23 | Norway                                             |  20000 | 
+  6 | kim   |  22 | south-hall                                         |  45000 | 2008-12-13
+(6 rows)
+
+dbfinserv=# begin;
+dbfinserv=*# insert into company(id,name,age,address,salary,join_date) values(7,'james',24,'houston',45000,'2008-12-13')
+INSERT 0 1
+dbfinserv=*# commit;
+COMMIT
+
+
+
+dbfinserv=# begin;
+BEGIN
+dbfinserv=*# insert into company(id,name,age,address,salary,join_date) values(8,'james',24,'houston',45000,'2008-12-13');
+INSERT 0 1
+dbfinserv=*# 
+dbfinserv=*# savepoint s1;
+SAVEPOINT
+dbfinserv=*# insert into company(id,name,age,address,salary,join_date) values(9,'james',24,'houston',45000,'2008-12-13');
+INSERT 0 1
+dbfinserv=*# rollback to savepoint s1;
+ROLLBACK
+
+
+dbfinserv=*# select * from company;
+ id | name  | age |                      address                       | salary | join_date  
+----+-------+-----+----------------------------------------------------+--------+------------
+  1 | Paul  |  32 | California                                         |  20000 | 2001-07-13
+  2 | Allen |  25 | Texas                                              |        | 2007-12-13
+  4 | Mark  |  25 | Rich-Mond                                          |  65000 | 2007-12-13
+  5 | David |  27 | Texas                                              |  85000 | 2007-12-13
+  3 | Teddy |  23 | Norway                                             |  20000 | 
+  6 | kim   |  22 | south-hall                                         |  45000 | 2008-12-13
+  7 | james |  24 | houston                                            |  45000 | 2008-12-13
+  8 | james |  24 | houston                                            |  45000 | 2008-12-13
+(8 rows)
+
+
+
+dbfinserv=*# delete from company where id=8;
+DELETE 1
+dbfinserv=*# select * from company;
+ id | name  | age |                      address                       | salary | join_date  
+----+-------+-----+----------------------------------------------------+--------+------------
+  1 | Paul  |  32 | California                                         |  20000 | 2001-07-13
+  2 | Allen |  25 | Texas                                              |        | 2007-12-13
+  4 | Mark  |  25 | Rich-Mond                                          |  65000 | 2007-12-13
+  5 | David |  27 | Texas                                              |  85000 | 2007-12-13
+  3 | Teddy |  23 | Norway                                             |  20000 | 
+  6 | kim   |  22 | south-hall                                         |  45000 | 2008-12-13
+  7 | james |  24 | houston                                            |  45000 | 2008-12-13
+(7 rows)
+
+dbfinserv=*# commit;
+COMMIT
+
+
+dbfinserv=# explain select * from company;
+                         QUERY PLAN                         
+------------------------------------------------------------
+ Seq Scan on company  (cost=0.00..12.90 rows=290 width=252)
+(1 row)
+
+dbfinserv=# create index empindex on company(name);
+CREATE INDEX
+
+                              ^
+dbfinserv=# explain select * from company where name='james';
+                       QUERY PLAN                        
+---------------------------------------------------------
+ Seq Scan on company  (cost=0.00..1.09 rows=1 width=252)
+   Filter: (name = 'james'::text)
+(2 rows)
+
+dbfinserv=# explain select * from company;
+                       QUERY PLAN                        
+---------------------------------------------------------
+ Seq Scan on company  (cost=0.00..1.07 rows=7 width=252)
+(1 row)
+
+
+
+dbfinserv=# \l
+                                            List of databases
+   Name    |  Owner   | Encoding | Collate | Ctype | ICU Locale | Locale Provider |   Access privileges   
+-----------+----------+----------+---------+-------+------------+-----------------+-----------------------
+ dbfinserv | postgres | UTF8     | C       | C     |            | libc            | 
+ postgres  | postgres | UTF8     | C       | C     |            | libc            | 
+ template0 | postgres | UTF8     | C       | C     |            | libc            | =c/postgres          +
+           |          |          |         |       |            |                 | postgres=CTc/postgres
+ template1 | postgres | UTF8     | C       | C     |            | libc            | =c/postgres          +
+           |          |          |         |       |            |                 | postgres=CTc/postgres
+(4 rows)
+
+dbfinserv=# \d dbfinserv;
+Did not find any relation named "dbfinserv".
+dbfinserv=# DROP INDEX empindex;
+DROP INDEX
+dbfinserv=# explain select * from company where name='james';
+                       QUERY PLAN                        
+---------------------------------------------------------
+ Seq Scan on company  (cost=0.00..1.09 rows=1 width=252)
+   Filter: (name = 'james'::text)
+(2 rows)
+
+dbfinserv=# explain select * from company;
+                       QUERY PLAN                        
+---------------------------------------------------------
+ Seq Scan on company  (cost=0.00..1.07 rows=7 width=252)
+(1 row)
+
+dbfinserv=# explain select * from company;
+                       QUERY PLAN                        
+---------------------------------------------------------
+ Seq Scan on company  (cost=0.00..1.07 rows=7 width=252)
+(1 row)
+
+dbfinserv=# explain select * from company;
+                       QUERY PLAN                        
+---------------------------------------------------------
+ Seq Scan on company  (cost=0.00..1.07 rows=7 width=252)
+(1 row)
+
+                                ^
+dbfinserv=# CREATE VIEW empsalaryview AS select name,salary from  company;
+CREATE VIEW
+dbfinserv=# select * from empsalaryview;
+
+ name  | salary 
+-------+--------
+ Paul  |  20000
+ Allen |       
+ Mark  |  65000
+ David |  85000
+ Teddy |  20000
+ kim   |  45000
+ james |  45000
+(7 rows)
+
+
+                                              ^
+dbfinserv=# update empsalaryview set salary=50000 where name='Allen';
+UPDATE 1
+dbfinserv=# select * from empsalaryview;
+ name  | salary 
+-------+--------
+ Paul  |  20000
+ Mark  |  65000
+ David |  85000
+ Teddy |  20000
+ kim   |  45000
+ james |  45000
+ Allen |  50000
+(7 rows)
+
+
+
+dbfinserv=# select * from company;
+ id | name  | age |                      address                       | salary | join_date  
+----+-------+-----+----------------------------------------------------+--------+------------
+  1 | Paul  |  32 | California                                         |  20000 | 2001-07-13
+  4 | Mark  |  25 | Rich-Mond                                          |  65000 | 2007-12-13
+  5 | David |  27 | Texas                                              |  85000 | 2007-12-13
+  3 | Teddy |  23 | Norway                                             |  20000 | 
+  6 | kim   |  22 | south-hall                                         |  45000 | 2008-12-13
+  7 | james |  24 | houston                                            |  45000 | 2008-12-13
+  2 | Allen |  25 | Texas                                              |  50000 | 2007-12-13
+(7 rows)
+
+
+
+
+dbfinserv=# insert into empsalaryview(name,salary) values('uttej',100000);
+ERROR:  null value in column "id" of relation "company" violates not-null constraint
+DETAIL:  Failing row contains (null, uttej, null, null, 100000, null).
+
+
+
+
+dbfinserv=# drop view empsalaryview;
+DROP VIEW
+
+
+
+dbfinserv=# create table testarray( m_no integer[],ename text);
+CREATE TABLE
+dbfinserv=# insert into testarray values(array[1,2,3,4,5,6],'sai');
+INSERT 0 1
+dbfinserv=# select * from testarray;
+     m_no      | ename 
+---------------+-------
+ {1,2,3,4,5,6} | sai
+(1 row)
+
+dbfinserv=# 
