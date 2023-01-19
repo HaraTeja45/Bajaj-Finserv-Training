@@ -1,0 +1,353 @@
+Last login: Fri Jan 13 12:38:27 on ttys002
+/Library/PostgreSQL/15/scripts/runpsql.sh; exit
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+L-W4PWN9XC2K:~ venkatateja$ /Library/PostgreSQL/15/scripts/runpsql.sh; exit
+Server [localhost]: 
+Database [postgres]: 
+Port [5432]: 
+Username [postgres]: postgres
+Password for user postgres: 
+psql (15.1)
+Type "help" for help.
+
+postgres=# \c
+You are now connected to database "postgres" as user "postgres".
+postgres=# \l
+                                            List of databases
+   Name    |  Owner   | Encoding | Collate | Ctype | ICU Locale | Locale Provider |   Access privileges   
+-----------+----------+----------+---------+-------+------------+-----------------+-----------------------
+ dbfinserv | postgres | UTF8     | C       | C     |            | libc            | 
+ postgres  | postgres | UTF8     | C       | C     |            | libc            | 
+ template0 | postgres | UTF8     | C       | C     |            | libc            | =c/postgres          +
+           |          |          |         |       |            |                 | postgres=CTc/postgres
+ template1 | postgres | UTF8     | C       | C     |            | libc            | =c/postgres          +
+           |          |          |         |       |            |                 | postgres=CTc/postgres
+(4 rows)
+
+postgres=# \d
+Did not find any relations.
+postgres=# CREATE TABLE products (
+postgres(#     product_no integer,
+postgres(#     name text,
+postgres(#     price numeric
+postgres(# );
+CREATE TABLE
+postgres=# INSERT INTO products VALUES(1,'Butter',10);
+INSERT 0 1
+postgres=# INSERT INTO employee VALUES(102,'HARA',65);
+ERROR:  relation "employee" does not exist
+LINE 1: INSERT INTO employee VALUES(102,'HARA',65);
+                    ^
+postgres=# \D
+invalid command \D
+Try \? for help.
+postgres=# \d
+          List of relations
+ Schema |   Name   | Type  |  Owner   
+--------+----------+-------+----------
+ public | products | table | postgres
+(1 row)
+
+postgres=# INSERT INTO products VALUES(2,'Cheese',20);
+INSERT 0 1
+postgres=# INSERT INTO products VALUES(3,'Onion',30);
+INSERT 0 1
+postgres=# SELECT * FROM products;
+ product_no |  name  | price 
+------------+--------+-------
+          1 | Butter |    10
+          2 | Cheese |    20
+          3 | Onion  |    30
+(3 rows)
+
+postgres=# INSERT INTO products VALUES((4,'Bread',5),(5,'Milk',40));
+ERROR:  column "product_no" is of type integer but expression is of type record
+LINE 1: INSERT INTO products VALUES((4,'Bread',5),(5,'Milk',40));
+                                    ^
+HINT:  You will need to rewrite or cast the expression.
+postgres=# INSERT INTO products(product_no,name,price) VALUES((4,'Bread',5),(5,'Milk',40));
+ERROR:  INSERT has more target columns than expressions
+LINE 1: INSERT INTO products(product_no,name,price) VALUES((4,'Bread...
+                                             ^
+postgres=# INSERT INTO products(product_no,name,price) VALUES((4,'Bread',5),(5,'Milk',40),(6,'ghee',50));
+ERROR:  column "product_no" is of type integer but expression is of type record
+LINE 1: ...NSERT INTO products(product_no,name,price) VALUES((4,'Bread'...
+                                                             ^
+HINT:  You will need to rewrite or cast the expression.
+postgres=# INSERT INTO products VALUES(4,'Bread',5),(5,'Milk',40),(6,'ghee',50);
+INSERT 0 3
+postgres=# select * from products;
+ product_no |  name  | price 
+------------+--------+-------
+          1 | Butter |    10
+          2 | Cheese |    20
+          3 | Onion  |    30
+          4 | Bread  |     5
+          5 | Milk   |    40
+          6 | ghee   |    50
+(6 rows)
+
+postgres=# update product set name='Bread',price=10,where product_no=4;
+ERROR:  syntax error at or near "where"
+LINE 1: update product set name='Bread',price=10,where product_no=4;
+                                                 ^
+postgres=# update product set name='Bread',price=10 where product_no=4;
+ERROR:  relation "product" does not exist
+LINE 1: update product set name='Bread',price=10 where product_no=4;
+               ^
+postgres=# update products set name='Bread',price=10 where product_no=4;
+UPDATE 1
+postgres=# select * from products;
+ product_no |  name  | price 
+------------+--------+-------
+          1 | Butter |    10
+          2 | Cheese |    20
+          3 | Onion  |    30
+          5 | Milk   |    40
+          6 | ghee   |    50
+          4 | Bread  |    10
+(6 rows)
+
+postgres=# ALTER TABLE products RENAME COLUMN price TO salary;
+ALTER TABLE
+postgres=# ALTER TABLE products RENAME COLUMN product_no TO eid;
+ALTER TABLE
+postgres=# ALTER TABLE products TO employee;
+ERROR:  syntax error at or near "TO"
+LINE 1: ALTER TABLE products TO employee;
+                             ^
+postgres=# ALTER TABLE products RENAME  TO employee;
+ALTER TABLE
+postgres=# SELECT * FROM employee;
+ eid |  name  | salary 
+-----+--------+--------
+   1 | Butter |     10
+   2 | Cheese |     20
+   3 | Onion  |     30
+   5 | Milk   |     40
+   6 | ghee   |     50
+   4 | Bread  |     10
+(6 rows)
+
+postgres=# delete from employee where eid=6;
+DELETE 1
+postgres=# SELECT * FROM employee;
+ eid |  name  | salary 
+-----+--------+--------
+   1 | Butter |     10
+   2 | Cheese |     20
+   3 | Onion  |     30
+   5 | Milk   |     40
+   4 | Bread  |     10
+(5 rows)
+
+postgres=# delete from employee where eid=5;
+DELETE 1
+postgres=# SELECT * FROM employee;
+ eid |  name  | salary 
+-----+--------+--------
+   1 | Butter |     10
+   2 | Cheese |     20
+   3 | Onion  |     30
+   4 | Bread  |     10
+(4 rows)
+
+postgres=# ేాె
+postgres=# ;
+postgres=# ెంమచచ;
+ERROR:  syntax error at or near "ెంమచచ"
+LINE 1: ెంమచచ;
+        ^
+postgres=# SELECT CONCAT (name,salary) from employee;
+  concat  
+----------
+ Butter10
+ Cheese20
+ Onion30
+ Bread10
+(4 rows)
+
+postgres=# SELECT CONCAT (name,salary) as hello  from employee;
+  hello   
+----------
+ Butter10
+ Cheese20
+ Onion30
+ Bread10
+(4 rows)
+
+postgres=# SELECT CONCAT (eid,salary) as hello  from employee;
+ hello 
+-------
+ 110
+ 220
+ 330
+ 410
+(4 rows)
+
+postgres=# select distinct salary from employee;
+ salary 
+--------
+     10
+     30
+     20
+(3 rows)
+
+postgres=# select distinct (salary,eid) from employee;
+  row   
+--------
+ (10,1)
+ (10,4)
+ (20,2)
+ (30,3)
+(4 rows)
+
+postgres=# select distinct (salary,eid) as different  from employee;
+ different 
+-----------
+ (10,1)
+ (10,4)
+ (20,2)
+ (30,3)
+(4 rows)
+
+postgres=# select salary,eid from employee;
+ salary | eid 
+--------+-----
+     10 |   1
+     20 |   2
+     30 |   3
+     10 |   4
+(4 rows)
+
+postgres=# distinct salary,eid from employee;
+ERROR:  syntax error at or near "distinct"
+LINE 1: distinct salary,eid from employee;
+        ^
+postgres=# (distinct salary),eid from employee;
+ERROR:  syntax error at or near "distinct"
+LINE 1: (distinct salary),eid from employee;
+         ^
+postgres=# select (distinct salary),eid from employee;
+ERROR:  syntax error at or near "distinct"
+LINE 1: select (distinct salary),eid from employee;
+                ^
+postgres=# select distinct (salary),eid from employee;
+ salary | eid 
+--------+-----
+     10 |   1
+     20 |   2
+     10 |   4
+     30 |   3
+(4 rows)
+
+postgres=# select count(*) from employee;
+ count 
+-------
+     4
+(1 row)
+
+postgres=# select eid,distinct(salary) from employee;
+ERROR:  syntax error at or near "distinct"
+LINE 1: select eid,distinct(salary) from employee;
+                   ^
+postgres=# select eid,distinct(salary) from employee;
+ERROR:  syntax error at or near "distinct"
+LINE 1: select eid,distinct(salary) from employee;
+                   ^
+postgres=# select distinct(salary), eid from employee;
+ salary | eid 
+--------+-----
+     10 |   1
+     20 |   2
+     10 |   4
+     30 |   3
+(4 rows)
+
+postgres=# select distinct(salary), distinct(eid) from employee;
+ERROR:  syntax error at or near "distinct"
+LINE 1: select distinct(salary), distinct(eid) from employee;
+                                 ^
+postgres=# select distinct(salary,eid) from employee;
+  row   
+--------
+ (10,1)
+ (10,4)
+ (20,2)
+ (30,3)
+(4 rows)
+
+postgres=# select 8 from employee where eid1.salary!=eid2.salary;
+ERROR:  missing FROM-clause entry for table "eid1"
+LINE 1: select 8 from employee where eid1.salary!=eid2.salary;
+                                     ^
+postgres=# select * from employee where eid1.salary1 !=eid2.salary2;
+ERROR:  missing FROM-clause entry for table "eid1"
+LINE 1: select * from employee where eid1.salary1 !=eid2.salary2;
+                                     ^
+postgres=# select distinct(salary and eid) from employee;
+ERROR:  argument of AND must be type boolean, not type numeric
+LINE 1: select distinct(salary and eid) from employee;
+                        ^
+postgres=# select * from employee where eid.salary !=eid.salary;
+ERROR:  missing FROM-clause entry for table "eid"
+LINE 1: select * from employee where eid.salary !=eid.salary;
+                                     ^
+postgres=# select sum(salary) from employee;
+ sum 
+-----
+  70
+(1 row)
+
+postgres=# select unique(salary,eid) from employee;
+ERROR:  syntax error at or near "salary"
+LINE 1: select unique(salary,eid) from employee;
+                      ^
+postgres=# select count(eid), salary from employee group by salary;
+ count | salary 
+-------+--------
+     2 |     10
+     1 |     30
+     1 |     20
+(3 rows)
+
+postgres=# select count(eid), salary from employee group by salary order by asc; 
+ERROR:  syntax error at or near "asc"
+LINE 1: ...unt(eid), salary from employee group by salary order by asc;
+                                                                   ^
+postgres=# select count(eid), salary from employee group by salary order by salary asc;
+ count | salary 
+-------+--------
+     2 |     10
+     1 |     20
+     1 |     30
+(3 rows)
+
+postgres=# select count(eid), salary from employee group by salary order by salary asc;
+ count | salary 
+-------+--------
+     2 |     10
+     1 |     20
+     1 |     30
+(3 rows)
+
+postgres=# select count(eid), salary from employee group by salary order by count asc;
+ count | salary 
+-------+--------
+     1 |     30
+     1 |     20
+     2 |     10
+(3 rows)
+
+postgres=# ెCREATE TABLE department (
+    
+);  
+CREATE TABLE
+postgres=# drop table department;
+DROP TABLE
+postgres=# CREATE TABLE department (
+    did integer primary key,dname text,eid int
+);
