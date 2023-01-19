@@ -38,10 +38,9 @@ dbfinserv=# \d
 
 
 
-dbfinserv=# create table department( id int primary key not null , dept char(50) not null,eid int not null);
+dbfinserv=# CREATE TABLE department( id INT PRIMARY KEY NOT NULL , dept CHAR(50) NOT NULL,eid INT NOT NULL);
 CREATE TABLE
-                                                    ^
-dbfinserv=# create table company( id int primary key not null,name text not null,age int not null,address char(50),salary real,join_date date);
+dbfinserv=# CREATE TABLE COMPANY( id INT PRIMARY KEY NOT NULL,name TEXT NOT NULL,age INT NOT NULL,address CHAR(50),salary REAL,join_date DATE);
 CREATE TABLE
 dbfinserv=# INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY,JOIN_DATE) VALUES (1, 'Paul', 32, 'California', 20000.00,'2001-07-13');
 INSERT 0 1
@@ -50,7 +49,7 @@ INSERT 0 1
 dbfinserv=# INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY,JOIN_DATE) VALUES (4, 'Mark', 25, 'Rich-Mond ', 65000.00, '2007-12-13' ), (5, 'David', 27, 'Texas', 85000.00, '2007-12-13');
 INSERT 0 2
 
-dbfinserv=# select * from company;
+dbfinserv=# SELECT * FROM COMPANY;
  id | name  | age |                      address                       | salary | join_date  
 ----+-------+-----+----------------------------------------------------+--------+------------
   1 | Paul  |  32 | California                                         |  20000 | 2001-07-13
@@ -62,7 +61,7 @@ dbfinserv=# select * from company;
 dbfinserv=# INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY,JOIN_DATE) VALUES (3, 'Teddy', 23, 'Norway', 20000.00, DEFAULT );
 INSERT 0 1
 
-dbfinserv=# select * from company;
+dbfinserv=# SELECT * FROM COMPANY;
  id | name  | age |                      address                       | salary | join_date  
 ----+-------+-----+----------------------------------------------------+--------+------------
   1 | Paul  |  32 | California                                         |  20000 | 2001-07-13
@@ -82,22 +81,22 @@ dbfinserv=# \d
 
 
                                              ^
-dbfinserv=# insert into department (id,dept,eid) values (1,'it billing',1);
+dbfinserv=# INSERT INTO department (id,dept,eid) VALUES (1,'it billing',1);
 INSERT 0 1
-dbfinserv=# insert into department (id,dept,eid) values (2,'engineering',2);
+dbfinserv=# INSERT INTO department (id,dept,eid) VALUES (2,'engineering',2);
 INSERT 0 1
-dbfinserv=# insert into department (id,dept,eid) values (3,'finance',7);
+dbfinserv=# INSERT INTO department (id,dept,eid) VALUES (3,'finance',7);
 INSERT 0 1
 
                ^
-dbfinserv=# select * from company where salary=10000;
+dbfinserv=# SELECT * FROM company WHERE salary=10000;
  id | name | age | address | salary | join_date 
 ----+------+-----+---------+--------+-----------
 (0 rows)
 
 
 
-dbfinserv=# select * from company where salary>10000;
+dbfinserv=# SELECT * FROM company WHERE salary>10000;
  id | name  | age |                      address                       | salary | join_date  
 ----+-------+-----+----------------------------------------------------+--------+------------
   1 | Paul  |  32 | California                                         |  20000 | 2001-07-13
@@ -108,7 +107,7 @@ dbfinserv=# select * from company where salary>10000;
 
 
 
-dbfinserv=# select count(*) as records from company;
+dbfinserv=# SELECT count(*) AS records FROM company;
  records 
 ---------
        5
@@ -116,13 +115,13 @@ dbfinserv=# select count(*) as records from company;
 
 
 
-dbfinserv=# begin;
+dbfinserv=# BEGIN;
 BEGIN
-dbfinserv=*# delete from company where age=25;
+dbfinserv=*# DELETE FROM company WHERE age=25;
 DELETE 2
-dbfinserv=*# rollback;
+dbfinserv=*# ROLLBACK;
 ROLLBACK
-dbfinserv=# select * from company;
+dbfinserv=# SELECT * FROM company;
  id | name  | age |                      address                       | salary | join_date  
 ----+-------+-----+----------------------------------------------------+--------+------------
   1 | Paul  |  32 | California                                         |  20000 | 2001-07-13
@@ -135,13 +134,13 @@ dbfinserv=# select * from company;
 
 
 
-dbfinserv=# begin;
+dbfinserv=# BEGIN;
 BEGIN
-dbfinserv=*# insert into company(id,name,age,address,salary,join_date) values(6,'kim',22,'south-hall',45000,'2008-12-13');
+dbfinserv=*# INSERT INTO company(id,name,age,address,salary,join_date) VALUES (6,'kim',22,'south-hall',45000,'2008-12-13');
 INSERT 0 1
-dbfinserv=*# commit;
+dbfinserv=*# COMMIT;
 COMMIT
-dbfinserv=# select * from company;
+dbfinserv=# SELECT * FROM company;
  id | name  | age |                      address                       | salary | join_date  
 ----+-------+-----+----------------------------------------------------+--------+------------
   1 | Paul  |  32 | California                                         |  20000 | 2001-07-13
@@ -152,28 +151,28 @@ dbfinserv=# select * from company;
   6 | kim   |  22 | south-hall                                         |  45000 | 2008-12-13
 (6 rows)
 
-dbfinserv=# begin;
-dbfinserv=*# insert into company(id,name,age,address,salary,join_date) values(7,'james',24,'houston',45000,'2008-12-13')
+dbfinserv=# BEGIN;
+dbfinserv=*# INSERT INTO company(id,name,age,address,salary,join_date) VALUES(7,'james',24,'houston',45000,'2008-12-13')
 INSERT 0 1
-dbfinserv=*# commit;
+dbfinserv=*# COMMIT;
 COMMIT
 
 
 
 dbfinserv=# begin;
 BEGIN
-dbfinserv=*# insert into company(id,name,age,address,salary,join_date) values(8,'james',24,'houston',45000,'2008-12-13');
+dbfinserv=*# INSERT INTO company(id,name,age,address,salary,join_date) VALUES(8,'james',24,'houston',45000,'2008-12-13');
 INSERT 0 1
 dbfinserv=*# 
 dbfinserv=*# savepoint s1;
 SAVEPOINT
-dbfinserv=*# insert into company(id,name,age,address,salary,join_date) values(9,'james',24,'houston',45000,'2008-12-13');
+dbfinserv=*# INSERT INTO company(id,name,age,address,salary,join_date) VALUES(9,'james',24,'houston',45000,'2008-12-13');
 INSERT 0 1
-dbfinserv=*# rollback to savepoint s1;
+dbfinserv=*# ROLLBACK to savepoint s1;
 ROLLBACK
 
 
-dbfinserv=*# select * from company;
+dbfinserv=*# SELECT * FROM company;
  id | name  | age |                      address                       | salary | join_date  
 ----+-------+-----+----------------------------------------------------+--------+------------
   1 | Paul  |  32 | California                                         |  20000 | 2001-07-13
@@ -188,9 +187,9 @@ dbfinserv=*# select * from company;
 
 
 
-dbfinserv=*# delete from company where id=8;
+dbfinserv=*# DELETE FROM company WHERE id=8;
 DELETE 1
-dbfinserv=*# select * from company;
+dbfinserv=*# SELECT * FROM company;
  id | name  | age |                      address                       | salary | join_date  
 ----+-------+-----+----------------------------------------------------+--------+------------
   1 | Paul  |  32 | California                                         |  20000 | 2001-07-13
@@ -202,28 +201,28 @@ dbfinserv=*# select * from company;
   7 | james |  24 | houston                                            |  45000 | 2008-12-13
 (7 rows)
 
-dbfinserv=*# commit;
+dbfinserv=*# COMMIT;
 COMMIT
 
 
-dbfinserv=# explain select * from company;
+dbfinserv=# EXPLAIN SELECT * FROM company;
                          QUERY PLAN                         
 ------------------------------------------------------------
  Seq Scan on company  (cost=0.00..12.90 rows=290 width=252)
 (1 row)
 
-dbfinserv=# create index empindex on company(name);
+dbfinserv=# CREATE INDEX empindex ON company(name);
 CREATE INDEX
 
                               ^
-dbfinserv=# explain select * from company where name='james';
+dbfinserv=# explain SELECT * FROM company WHERE name='james';
                        QUERY PLAN                        
 ---------------------------------------------------------
  Seq Scan on company  (cost=0.00..1.09 rows=1 width=252)
    Filter: (name = 'james'::text)
 (2 rows)
 
-dbfinserv=# explain select * from company;
+dbfinserv=# EXPLAIN SELECT * FROM company;
                        QUERY PLAN                        
 ---------------------------------------------------------
  Seq Scan on company  (cost=0.00..1.07 rows=7 width=252)
@@ -243,39 +242,38 @@ dbfinserv=# \l
            |          |          |         |       |            |                 | postgres=CTc/postgres
 (4 rows)
 
-dbfinserv=# \d dbfinserv;
-Did not find any relation named "dbfinserv".
+
 dbfinserv=# DROP INDEX empindex;
 DROP INDEX
-dbfinserv=# explain select * from company where name='james';
+dbfinserv=# EXPLAIN SELECT * FROM company WHERE name='james';
                        QUERY PLAN                        
 ---------------------------------------------------------
  Seq Scan on company  (cost=0.00..1.09 rows=1 width=252)
    Filter: (name = 'james'::text)
 (2 rows)
 
-dbfinserv=# explain select * from company;
+dbfinserv=# EXPLAIN SELECT * FROM company;
                        QUERY PLAN                        
 ---------------------------------------------------------
  Seq Scan on company  (cost=0.00..1.07 rows=7 width=252)
 (1 row)
 
-dbfinserv=# explain select * from company;
+dbfinserv=# EXPALIN SELECT * FROM company;
                        QUERY PLAN                        
 ---------------------------------------------------------
  Seq Scan on company  (cost=0.00..1.07 rows=7 width=252)
 (1 row)
 
-dbfinserv=# explain select * from company;
+dbfinserv=# EXPLAIN SELECT  * FROM company;
                        QUERY PLAN                        
 ---------------------------------------------------------
  Seq Scan on company  (cost=0.00..1.07 rows=7 width=252)
 (1 row)
 
                                 ^
-dbfinserv=# CREATE VIEW empsalaryview AS select name,salary from  company;
+dbfinserv=# CREATE VIEW empsalaryview AS select name,salary FROM company;
 CREATE VIEW
-dbfinserv=# select * from empsalaryview;
+dbfinserv=# SELECT * FROM empsalaryview;
 
  name  | salary 
 -------+--------
@@ -290,9 +288,9 @@ dbfinserv=# select * from empsalaryview;
 
 
                                               ^
-dbfinserv=# update empsalaryview set salary=50000 where name='Allen';
+dbfinserv=# UPDATE empsalaryview SET salary=50000 WHERE name='Allen';
 UPDATE 1
-dbfinserv=# select * from empsalaryview;
+dbfinserv=# SELECT * FROM empsalaryview;
  name  | salary 
 -------+--------
  Paul  |  20000
@@ -306,7 +304,7 @@ dbfinserv=# select * from empsalaryview;
 
 
 
-dbfinserv=# select * from company;
+dbfinserv=# SELECT * FROM company;
  id | name  | age |                      address                       | salary | join_date  
 ----+-------+-----+----------------------------------------------------+--------+------------
   1 | Paul  |  32 | California                                         |  20000 | 2001-07-13
@@ -321,23 +319,16 @@ dbfinserv=# select * from company;
 
 
 
-dbfinserv=# insert into empsalaryview(name,salary) values('uttej',100000);
-ERROR:  null value in column "id" of relation "company" violates not-null constraint
-DETAIL:  Failing row contains (null, uttej, null, null, 100000, null).
-
-
-
-
-dbfinserv=# drop view empsalaryview;
+dbfinserv=# DROP VIEW empsalaryview;
 DROP VIEW
 
 
 
-dbfinserv=# create table testarray( m_no integer[],ename text);
+dbfinserv=# CREATE TABLE testarray( m_no integer[],ename text);
 CREATE TABLE
-dbfinserv=# insert into testarray values(array[1,2,3,4,5,6],'sai');
+dbfinserv=# ISNERT INTO testarray VALUES(array[1,2,3,4,5,6],'sai');
 INSERT 0 1
-dbfinserv=# select * from testarray;
+dbfinserv=# SELECT  * FROM testarray;
      m_no      | ename 
 ---------------+-------
  {1,2,3,4,5,6} | sai
