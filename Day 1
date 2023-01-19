@@ -1,0 +1,265 @@
+Last login: Fri Jan 13 12:38:27 on ttys002
+/Library/PostgreSQL/15/scripts/runpsql.sh; exit
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+L-W4PWN9XC2K:~ venkatateja$ /Library/PostgreSQL/15/scripts/runpsql.sh; exit
+Server [localhost]: 
+Database [postgres]: 
+Port [5432]: 
+Username [postgres]: postgres
+Password for user postgres: 
+psql (15.1)
+Type "help" for help.
+
+postgres=# \c
+You are now connected to database "postgres" as user "postgres".
+postgres=# \l
+                                            List of databases
+   Name    |  Owner   | Encoding | Collate | Ctype | ICU Locale | Locale Provider |   Access privileges   
+-----------+----------+----------+---------+-------+------------+-----------------+-----------------------
+ dbfinserv | postgres | UTF8     | C       | C     |            | libc            | 
+ postgres  | postgres | UTF8     | C       | C     |            | libc            | 
+ template0 | postgres | UTF8     | C       | C     |            | libc            | =c/postgres          +
+           |          |          |         |       |            |                 | postgres=CTc/postgres
+ template1 | postgres | UTF8     | C       | C     |            | libc            | =c/postgres          +
+           |          |          |         |       |            |                 | postgres=CTc/postgres
+(4 rows)
+
+postgres=# \d
+Did not find any relations.
+postgres=# CREATE TABLE products (
+postgres(#     product_no integer,
+postgres(#     name text,
+postgres(#     price numeric
+postgres(# );
+CREATE TABLE
+postgres=# INSERT INTO products VALUES(1,'Butter',10);
+INSERT 0 1
+
+postgres=# \D
+invalid command \D
+Try \? for help.
+postgres=# \d
+          List of relations
+ Schema |   Name   | Type  |  Owner   
+--------+----------+-------+----------
+ public | products | table | postgres
+(1 row)
+
+postgres=# INSERT INTO products VALUES(2,'Cheese',20);
+INSERT 0 1
+postgres=# INSERT INTO products VALUES(3,'Onion',30);
+INSERT 0 1
+postgres=# SELECT * FROM products;
+ product_no |  name  | price 
+------------+--------+-------
+          1 | Butter |    10
+          2 | Cheese |    20
+          3 | Onion  |    30
+(3 rows)
+
+postgres=# INSERT INTO products VALUES(4,'Bread',5),(5,'Milk',40),(6,'ghee',50);
+INSERT 0 3
+postgres=# select * from products;
+ product_no |  name  | price 
+------------+--------+-------
+          1 | Butter |    10
+          2 | Cheese |    20
+          3 | Onion  |    30
+          4 | Bread  |     5
+          5 | Milk   |    40
+          6 | ghee   |    50
+(6 rows)
+
+postgres=# UPDATE products SET name='Bread',price=10 WHERE product_no=4;
+UPDATE 1
+postgres=# SELECT * FROM products;
+ product_no |  name  | price 
+------------+--------+-------
+          1 | Butter |    10
+          2 | Cheese |    20
+          3 | Onion  |    30
+          5 | Milk   |    40
+          6 | ghee   |    50
+          4 | Bread  |    10
+(6 rows)
+
+postgres=# ALTER TABLE products RENAME COLUMN price TO salary;
+ALTER TABLE
+postgres=# ALTER TABLE products RENAME COLUMN product_no TO eid;
+ALTER TABLE
+
+postgres=# ALTER TABLE products RENAME  TO employee;
+ALTER TABLE
+postgres=# SELECT * FROM employee;
+ eid |  name  | salary 
+-----+--------+--------
+   1 | Butter |     10
+   2 | Cheese |     20
+   3 | Onion  |     30
+   5 | Milk   |     40
+   6 | ghee   |     50
+   4 | Bread  |     10
+(6 rows)
+
+postgres=# DELETE FROM employee WHERE eid=6;
+DELETE 1
+postgres=# SELECT * FROM employee;
+ eid |  name  | salary 
+-----+--------+--------
+   1 | Butter |     10
+   2 | Cheese |     20
+   3 | Onion  |     30
+   5 | Milk   |     40
+   4 | Bread  |     10
+(5 rows)
+
+postgres=# DELETE FROM employee WHERE eid=5;
+DELETE 1
+postgres=# SELECT * FROM employee;
+ eid |  name  | salary 
+-----+--------+--------
+   1 | Butter |     10
+   2 | Cheese |     20
+   3 | Onion  |     30
+   4 | Bread  |     10
+(4 rows)
+
+
+postgres=# SELECT CONCAT (name,salary) from employee;
+  concat  
+----------
+ Butter10
+ Cheese20
+ Onion30
+ Bread10
+(4 rows)
+
+postgres=# SELECT CONCAT (name,salary) AS hello  FROM employee;
+  hello   
+----------
+ Butter10
+ Cheese20
+ Onion30
+ Bread10
+(4 rows)
+
+postgres=# SELECT CONCAT (eid,salary) AS hello  FROM employee;
+ hello 
+-------
+ 110
+ 220
+ 330
+ 410
+(4 rows)
+
+postgres=# SELECT DISTINCT salary FROM employee;
+ salary 
+--------
+     10
+     30
+     20
+(3 rows)
+
+postgres=# SELECT DISTINCT (salary,eid) FROM employee;
+  row   
+--------
+ (10,1)
+ (10,4)
+ (20,2)
+ (30,3)
+(4 rows)
+
+postgres=# SELECT DISTINCT (salary,eid) AS different FROM employee;
+ different 
+-----------
+ (10,1)
+ (10,4)
+ (20,2)
+ (30,3)
+(4 rows)
+
+postgres=# SELECT salary,eid FROM employee;
+ salary | eid 
+--------+-----
+     10 |   1
+     20 |   2
+     30 |   3
+     10 |   4
+(4 rows)
+
+
+postgres=# SELECT distinct (salary),eid FROM employee;
+ salary | eid 
+--------+-----
+     10 |   1
+     20 |   2
+     10 |   4
+     30 |   3
+(4 rows)
+
+postgres=# SELECT count(*) FROM employee;
+ count 
+-------
+     4
+(1 row)
+
+postgres=# SELECT distinct(salary), eid FROM employee;
+ salary | eid 
+--------+-----
+     10 |   1
+     20 |   2
+     10 |   4
+     30 |   3
+(4 rows)
+
+postgres=# SELECT DISTINCT(salary,eid) FROM employee;
+  row   
+--------
+ (10,1)
+ (10,4)
+ (20,2)
+ (30,3)
+(4 rows)
+
+postgres=# SELECT sum(salary) FROM employee;
+ sum 
+-----
+  70
+(1 row)
+
+
+postgres=# SELECT count(eid), salary FROM employee GROUP BY salary;
+ count | salary 
+-------+--------
+     2 |     10
+     1 |     30
+     1 |     20
+(3 rows)
+
+postgres=# SELECT count(eid), salary FROM employee GROUP BY salary ORDER BY salary ASC;
+ count | salary 
+-------+--------
+     2 |     10
+     1 |     20
+     1 |     30
+(3 rows)
+
+postgres=# SELECT count(eid), salary FROM employee GROUP BY salary ORDER BY salary ASC;
+ count | salary 
+-------+--------
+     2 |     10
+     1 |     20
+     1 |     30
+(3 rows)
+
+postgres=# SELECT count(eid), salary FROM employee GROUP BY salary ORDER BY count ASC;
+ count | salary 
+-------+--------
+     1 |     30
+     1 |     20
+     2 |     10
+(3 rows)
+
