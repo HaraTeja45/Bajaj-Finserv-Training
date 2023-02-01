@@ -1,0 +1,218 @@
+<!DOCTYPE html> 
+<html>
+
+<head><title> Feedback </title></head>
+
+<body>
+    <form id="form" onsubmit="validateForm()">
+        <h1 align="center">Feedback</h1>
+        <table align="center" id="table">
+            
+                
+                <tr>
+
+                    <tr>
+
+                        <th></th>
+                        <th></th>
+        
+                </tr>
+
+                <tr>
+
+
+                    <td>
+                        <label   for="fname">First Name</label>
+                    </td> 
+
+                    <td>
+                        <input type="text" id ="fname" name="fname" >
+                    </td>
+        
+                </tr>
+ 
+                <tr>
+
+                    <td>
+                        <label   for="lname">Last Name</label>
+
+                    </td>
+        
+                    <td>
+                        <input type="text" id ="lname" name="lname" > 
+                    </td>
+                </tr>
+
+
+                <tr>
+
+                    <td>
+                        <label   for="email">Gmail</label>  
+
+                    </td>
+        
+                    <td>
+                        <input type="email" id ="email" name="email" > 
+                        <input type="button" name="verify" value="verify" onclick="return validateEmail()">
+                    </td>
+                </tr>
+
+        
+            
+                <tr>
+
+                <td>
+                    <label   for="comment">Comment</label>
+                </td>
+
+                <td>
+                    <textarea name="comment"></textarea> 
+                </td>
+                        
+
+
+                </tr>
+                    
+                </tr>
+
+                        
+                <tr>
+
+                    <td>
+                        <label   for="fType">Feedback Type</label>
+                    </td> 
+
+
+
+       
+
+
+
+
+                <td>
+
+                        <select name="ftype" id="ftype">
+                            <option value="Perfomance">Perfomance</option>
+                            <option value="Bug Report">Bug Report</option>
+                            <option value="Software Quality">Software Quality</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        
+
+                </td>
+
+
+
+
+            
+             <!--    <tr>
+                    <td><label   for="sex">Sex</label></td>
+                
+                    <td>
+                                    <input type="radio" id="male" name="sex" value="Male">
+                                    <label for="male">Male</label>
+                                    <input type="radio" id="female" name="sex" value="Female">
+                                    <label for="female">CSS</label>
+                    </td>
+                </tr>-->
+                
+
+
+
+
+
+
+
+
+            <!--  <tr>
+                <td><label for="hobbies">Hobbies</label></td>
+
+                <td> 
+                    <input type="checkbox" id="sports" name="sports" value="Sports">
+                    <label for="sports">Sports</label>
+                    <input type="checkbox" id="dancing" name="dancing" value="Dancing">
+                    <label for="dancing">Dancing</label>
+                    <input type="checkbox" id="singing" name="singing" value="Singing">
+                    <label for="singing">Singing</label>
+                </td>
+
+            </tr>-->
+
+            <tr>
+                <td><input type="reset" value="Clear"></td>   
+                <td> <input type="submit" value="Send Feedback"></td>
+            </tr> 
+
+
+        </table>
+
+    </form>
+
+            <style>
+
+            body{
+
+                margin: 100px 100px 100px 100px;
+                
+            }
+            /*#table
+            {
+                background-image: url('image.jpeg');
+                background-size:center;
+                background-repeat: no-repeat;
+                
+            }*/
+
+
+
+            </style>
+
+
+
+<script>
+
+
+
+    function validateForm(){
+
+        let x=document.forms["form"]["fname"].value;
+        if(x==""){
+            alert("Please enter your First Name");
+            return false;
+        }
+    }
+
+    function validateEmail(){
+        var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        let x=document.forms["form"]["email"].value;
+
+        
+            if(x.match(mailformat))
+            {
+               alert("Valid email address");
+                return true;
+            }
+            else
+            {
+                alert("Invalid email address.");
+               
+                return false;
+            }
+    } 
+</script>
+<style>
+
+    #form{
+
+
+        border: 5px solid;
+
+        background-image: url('image.jpeg');
+        background-size: cover;
+    }
+
+
+
+</style>
+</body>
+</html>
