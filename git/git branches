@@ -1,0 +1,679 @@
+Last login: Mon Jan 23 11:51:06 on ttys000
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+L-W4PWN9XC2K:~ venkatateja$ cd /Users/venkatateja/eclipse-workspace/Java_Training/src/main/java/com/finserv/git/
+L-W4PWN9XC2K:git venkatateja$ ls
+Dev1_Ex.java	Git_Training	Welcome.java
+L-W4PWN9XC2K:git venkatateja$ git add Welcome.java
+L-W4PWN9XC2K:git venkatateja$ git commit "First Commit"
+error: pathspec 'First Commit' did not match any file(s) known to git
+L-W4PWN9XC2K:git venkatateja$ git commit-m "First Commit"
+git: 'commit-m' is not a git command. See 'git --help'.
+
+The most similar command is
+	commit-tree
+L-W4PWN9XC2K:git venkatateja$ git commit -m "First Commit"
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.DS_Store
+	Git_Training/
+
+nothing added to commit but untracked files present (use "git add" to track)
+L-W4PWN9XC2K:git venkatateja$ git branch -M Dev1
+L-W4PWN9XC2K:git venkatateja$ git remote add origin https://github.com/HaraTeja45/Demo.git
+error: remote origin already exists.
+L-W4PWN9XC2K:git venkatateja$ git branch
+  BFL_క_Git_Training
+* Dev1
+L-W4PWN9XC2K:git venkatateja$ git mv options BFL_క_Git_Training BFL_Git_Training 
+fatal: destination 'BFL_Git_Training' is not a directory
+L-W4PWN9XC2K:git venkatateja$ git mv options BFL_Git_Training BFL_క_Git_Training 
+fatal: destination 'BFL_క_Git_Training' is not a directory
+L-W4PWN9XC2K:git venkatateja$ git init Git_Training
+Reinitialized existing Git repository in /Users/venkatateja/eclipse-workspace/Java_Training/src/main/java/com/finserv/git/Git_Training/.git/
+L-W4PWN9XC2K:git venkatateja$ ls
+Dev1_Ex.java	Git_Training	Welcome.java
+L-W4PWN9XC2K:git venkatateja$ git init add Welcome.java
+usage: git init [-q | --quiet] [--bare] [--template=<template-directory>] [--shared[=<permissions>]] [<directory>]
+L-W4PWN9XC2K:git venkatateja$ git add Welcome.java
+L-W4PWN9XC2K:git venkatateja$ git commit -m "ok"
+On branch Dev1
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.DS_Store
+	Git_Training/
+
+nothing added to commit but untracked files present (use "git add" to track)
+L-W4PWN9XC2K:git venkatateja$ git branch
+  BFL_క_Git_Training
+* Dev1
+L-W4PWN9XC2K:git venkatateja$ git branch -d BFL_క_Git_Training
+Deleted branch BFL_క_Git_Training (was 843f9aa).
+L-W4PWN9XC2K:git venkatateja$ git branch
+* Dev1
+L-W4PWN9XC2K:git venkatateja$ git Dev1 --list
+git: 'Dev1' is not a git command. See 'git --help'.
+L-W4PWN9XC2K:git venkatateja$ git Branch Dev1 --list
+fatal: cannot handle Branch as a builtin
+L-W4PWN9XC2K:git venkatateja$ git ls --files
+git: 'ls' is not a git command. See 'git --help'.
+
+The most similar command is
+	log
+L-W4PWN9XC2K:git venkatateja$ git ls-files
+Dev1_Ex.java
+Welcome.java
+L-W4PWN9XC2K:git venkatateja$ git remote add origin https://github.com/HaraTeja45/Demo.git
+error: remote origin already exists.
+L-W4PWN9XC2K:git venkatateja$ git branch -M main
+L-W4PWN9XC2K:git venkatateja$ git push -u origin main
+fatal: unable to access 'https://github.com/HaraTeja45/BFl_క_Git_Training.git/': The requested URL returned error: 400
+L-W4PWN9XC2K:git venkatateja$ git push -u origin main
+fatal: unable to access 'https://github.com/HaraTeja45/BFl_క_Git_Training.git/': The requested URL returned error: 400
+L-W4PWN9XC2K:git venkatateja$ git remote add origin https://github.com/HaraTeja45/Demo.git
+error: remote origin already exists.
+L-W4PWN9XC2K:git venkatateja$ git branch -M main
+L-W4PWN9XC2K:git venkatateja$ git push -u origin main
+fatal: unable to access 'https://github.com/HaraTeja45/BFl_క_Git_Training.git/': The requested URL returned error: 400
+L-W4PWN9XC2K:git venkatateja$ git branch -M main
+L-W4PWN9XC2K:git venkatateja$ git push -u origin main
+fatal: unable to access 'https://github.com/HaraTeja45/BFl_క_Git_Training.git/': The requested URL returned error: 400
+L-W4PWN9XC2K:git venkatateja$ git remote add origin https://github.com/HaraTeja45/Dev1.git
+error: remote origin already exists.
+L-W4PWN9XC2K:git venkatateja$ git remote
+origin
+L-W4PWN9XC2K:git venkatateja$ git remote -v
+origin	https://github.com/HaraTeja45/BFl_క_Git_Training.git (fetch)
+origin	https://github.com/HaraTeja45/BFl_క_Git_Training.git (push)
+L-W4PWN9XC2K:git venkatateja$ git remote remove origin
+L-W4PWN9XC2K:git venkatateja$ git remote add origin https://github.com/HaraTeja45/Demo.git
+L-W4PWN9XC2K:git venkatateja$ git branch -M main
+L-W4PWN9XC2K:git venkatateja$ git push -u origin main
+Username for 'https://github.com': HaraTeja45
+Password for 'https://HaraTeja45@github.com': 
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com/HaraTeja45/Demo.git/'
+L-W4PWN9XC2K:git venkatateja$ git push -u origin main
+Username for 'https://github.com': HaraTeja45
+Password for 'https://HaraTeja45@github.com': 
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (6/6), 715 bytes | 715.00 KiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/HaraTeja45/Demo.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+L-W4PWN9XC2K:git venkatateja$  ls
+Dev1_Ex.java	Git_Training	Welcome.java
+L-W4PWN9XC2K:git venkatateja$ git clone https://github.com/Uttej2468/Web-Technologies
+Cloning into 'Web-Technologies'...
+remote: Enumerating objects: 63, done.
+remote: Total 63 (delta 0), reused 0 (delta 0), pack-reused 63
+Receiving objects: 100% (63/63), 2.53 MiB | 583.00 KiB/s, done.
+Resolving deltas: 100% (12/12), done.
+L-W4PWN9XC2K:git venkatateja$ ls
+Dev1_Ex.java		Git_Training		Web-Technologies	Welcome.java
+L-W4PWN9XC2K:git venkatateja$ git pull https://github.com/HaraTeja45/Bajaj-Finserv-Training
+remote: Enumerating objects: 122, done.
+remote: Counting objects: 100% (68/68), done.
+remote: Compressing objects: 100% (39/39), done.
+remote: Total 122 (delta 30), reused 67 (delta 29), pack-reused 54
+Receiving objects: 100% (122/122), 38.89 KiB | 865.00 KiB/s, done.
+Resolving deltas: 100% (40/40), done.
+From https://github.com/HaraTeja45/Bajaj-Finserv-Training
+ * branch            HEAD       -> FETCH_HEAD
+hint: You have divergent branches and need to specify how to reconcile them.
+hint: You can do so by running one of the following commands sometime before
+hint: your next pull:
+hint: 
+hint:   git config pull.rebase false  # merge
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint: 
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
+fatal: Need to specify how to reconcile divergent branches.
+L-W4PWN9XC2K:git venkatateja$ ls
+Dev1_Ex.java		Git_Training		Web-Technologies	Welcome.java
+L-W4PWN9XC2K:git venkatateja$ ls
+Dev1_Ex.java		Git_Training		Web-Technologies	Welcome.java
+L-W4PWN9XC2K:git venkatateja$ git branches
+git: 'branches' is not a git command. See 'git --help'.
+L-W4PWN9XC2K:git venkatateja$ git branch ls
+L-W4PWN9XC2K:git venkatateja$ ls
+Dev1_Ex.java		Web-Technologies
+Git_Training		Welcome.java
+L-W4PWN9XC2K:git venkatateja$ git help
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           [--super-prefix=<path>] [--config-env=<name>=<envvar>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone     Clone a repository into a new directory
+   init      Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add       Add file contents to the index
+   mv        Move or rename a file, a directory, or a symlink
+   restore   Restore working tree files
+   rm        Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect    Use binary search to find the commit that introduced a bug
+   diff      Show changes between commits, commit and working tree, etc
+   grep      Print lines matching a pattern
+   log       Show commit logs
+   show      Show various types of objects
+   status    Show the working tree status
+
+grow, mark and tweak your common history
+   branch    List, create, or delete branches
+   commit    Record changes to the repository
+   merge     Join two or more development histories together
+   rebase    Reapply commits on top of another base tip
+   reset     Reset current HEAD to the specified state
+   switch    Switch branches
+   tag       Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch     Download objects and refs from another repository
+   pull      Fetch from and integrate with another repository or a local branch
+   push      Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+See 'git help git' for an overview of the system.
+L-W4PWN9XC2K:git venkatateja$ git help -branch
+error: unknown switch `b'
+usage: git help [-a|--all] [--[no-]verbose]] [--[no-]external-commands] [--[no-]aliases]
+   or: git help [[-i|--info] [-m|--man] [-w|--web]] [<command>]
+   or: git help [-g|--guides]
+   or: git help [-c|--config]
+
+    -a, --all             print all available commands
+    --external-commands   show external commands in --all
+    --aliases             show aliases in --all
+    -m, --man             show man page
+    -w, --web             show manual in web browser
+    -i, --info            show info page
+    -v, --verbose         print command description
+    -g, --guides          print list of useful guides
+    -c, --config          print all configuration variable names
+
+L-W4PWN9XC2K:git venkatateja$ git branch --list
+  ls
+* main
+L-W4PWN9XC2K:git venkatateja$ git branch -a
+  ls
+* main
+  remotes/origin/main
+L-W4PWN9XC2K:git venkatateja$ git branch
+  ls
+* main
+L-W4PWN9XC2K:git venkatateja$ git branch B1
+L-W4PWN9XC2K:git venkatateja$ git branch --list
+  B1
+  ls
+* main
+L-W4PWN9XC2K:git venkatateja$ git checkout B1
+Switched to branch 'B1'
+L-W4PWN9XC2K:git venkatateja$ git branch
+* B1
+  ls
+  main
+L-W4PWN9XC2K:git venkatateja$ git branch -d ls
+Deleted branch ls (was b0d003e).
+L-W4PWN9XC2K:git venkatateja$ git branch
+* B1
+  main
+L-W4PWN9XC2K:git venkatateja$ git branch -d B1
+error: Cannot delete branch 'B1' checked out at '/Users/venkatateja/eclipse-workspace/Java_Training/src/main/java/com/finserv/git'
+L-W4PWN9XC2K:git venkatateja$ git -d B1
+unknown option: -d
+usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           [--super-prefix=<path>] [--config-env=<name>=<envvar>]
+           <command> [<args>]
+L-W4PWN9XC2K:git venkatateja$ git branch B1
+fatal: a branch named 'B1' already exists
+L-W4PWN9XC2K:git venkatateja$ cd ..
+L-W4PWN9XC2K:finserv venkatateja$ git branch -d B1
+error: branch 'B1' not found.
+L-W4PWN9XC2K:finserv venkatateja$ git checkout main
+M	.metadata/.log
+D	.metadata/.plugins/org.eclipse.core.resources/.projects/.org.eclipse.egit.core.cmp/.markers.snap
+D	.metadata/.plugins/org.eclipse.core.resources/.projects/.org.eclipse.egit.core.cmp/.syncinfo.snap
+M	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.indexes/e4/b9/22/81/5f/95/history.index
+M	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.indexes/e4/b9/22/81/5f/fb/history.index
+M	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.indexes/e4/b9/22/81/5f/fc/history.index
+M	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.markers
+D	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.markers.snap
+D	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.syncinfo.snap
+M	.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index
+D	.metadata/.plugins/org.eclipse.core.resources/.root/.markers.snap
+D	.metadata/.plugins/org.eclipse.core.resources/.root/3.tree
+M	.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources
+D	.metadata/.plugins/org.eclipse.core.resources/3.snap
+M	.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.debug.ui.prefs
+M	.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.ui.prefs
+M	.metadata/.plugins/org.eclipse.debug.ui/launchConfigurationHistory.xml
+M	.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
+M	.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
+M	.metadata/.plugins/org.eclipse.jdt.core/2993761514.index
+M	.metadata/.plugins/org.eclipse.jdt.ui/QualifiedTypeNameHistory.xml
+M	.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/0.png
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/1.png
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/2.png
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/3.png
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/4.png
+M	.metadata/.plugins/org.eclipse.m2e.logback/0.log
+M	.metadata/.plugins/org.eclipse.pde.core/.cache/clean-cache.properties
+M	.metadata/.plugins/org.eclipse.ui.workbench/dialog_settings.xml
+M	.metadata/version.ini
+D	Java_Training/build/classes/com/finserv/basics/Assignment.class
+D	Java_Training/build/classes/com/finserv/basics/Circle.class
+D	Java_Training/build/classes/com/finserv/basics/Rectangle.class
+D	Java_Training/build/classes/com/finserv/basics/Shape.class
+D	Java_Training/build/classes/com/finserv/basics/Square.class
+D	Java_Training/build/classes/com/finserv/basics/TestAssignment.class
+M	Java_Training/build/classes/com/finserv/exceptions/TestExcepQ1.class
+D	Java_Training/src/main/java/com/finserv/basics/Assignment.java
+D	Java_Training/src/main/java/com/finserv/basics/Circle.java
+D	Java_Training/src/main/java/com/finserv/basics/Rectangle.java
+D	Java_Training/src/main/java/com/finserv/basics/Shape.java
+D	Java_Training/src/main/java/com/finserv/basics/Square.java
+D	Java_Training/src/main/java/com/finserv/basics/TestAssignment.java
+M	Java_Training/src/main/java/com/finserv/exceptions/TestExcepQ1.java
+Already on 'main'
+L-W4PWN9XC2K:finserv venkatateja$ ls
+Encapsulation	assignmentDay4	collections	git
+assignmentDay3	basics		exceptions
+L-W4PWN9XC2K:finserv venkatateja$ git branch
+* main
+L-W4PWN9XC2K:finserv venkatateja$ git branch B1
+L-W4PWN9XC2K:finserv venkatateja$ git branch
+  B1
+* main
+L-W4PWN9XC2K:finserv venkatateja$ git merge B1
+Already up to date.
+L-W4PWN9XC2K:finserv venkatateja$ git push
+fatal: The current branch main has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin main
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+L-W4PWN9XC2K:finserv venkatateja$ git branch
+  B1
+* main
+L-W4PWN9XC2K:finserv venkatateja$ git push --set-upstream origin b1
+fatal: b1 cannot be resolved to branch
+L-W4PWN9XC2K:finserv venkatateja$ git push --set-upstream origin B1
+Enumerating objects: 577, done.
+Counting objects: 100% (577/577), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (534/534), done.
+Writing objects: 100% (577/577), 15.22 MiB | 543.00 KiB/s, done.
+Total 577 (delta 122), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (122/122), done.
+To https://github.com/HaraTeja45/Hara-java.git
+ * [new branch]      B1 -> B1
+branch 'B1' set up to track 'origin/B1'.
+L-W4PWN9XC2K:finserv venkatateja$ git branch
+  B1
+* main
+L-W4PWN9XC2K:finserv venkatateja$ git push -u origin B1
+branch 'B1' set up to track 'origin/B1'.
+Everything up-to-date
+L-W4PWN9XC2K:finserv venkatateja$ git checkout B1
+M	.metadata/.log
+D	.metadata/.plugins/org.eclipse.core.resources/.projects/.org.eclipse.egit.core.cmp/.markers.snap
+D	.metadata/.plugins/org.eclipse.core.resources/.projects/.org.eclipse.egit.core.cmp/.syncinfo.snap
+M	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.indexes/e4/b9/22/81/5f/95/history.index
+M	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.indexes/e4/b9/22/81/5f/fb/history.index
+M	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.indexes/e4/b9/22/81/5f/fc/history.index
+M	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.markers
+D	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.markers.snap
+D	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.syncinfo.snap
+M	.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index
+D	.metadata/.plugins/org.eclipse.core.resources/.root/.markers.snap
+D	.metadata/.plugins/org.eclipse.core.resources/.root/3.tree
+M	.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources
+D	.metadata/.plugins/org.eclipse.core.resources/3.snap
+M	.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.debug.ui.prefs
+M	.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.ui.prefs
+M	.metadata/.plugins/org.eclipse.debug.ui/launchConfigurationHistory.xml
+M	.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
+M	.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
+M	.metadata/.plugins/org.eclipse.jdt.core/2993761514.index
+M	.metadata/.plugins/org.eclipse.jdt.ui/QualifiedTypeNameHistory.xml
+M	.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/0.png
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/1.png
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/2.png
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/3.png
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/4.png
+M	.metadata/.plugins/org.eclipse.m2e.logback/0.log
+M	.metadata/.plugins/org.eclipse.pde.core/.cache/clean-cache.properties
+M	.metadata/.plugins/org.eclipse.ui.workbench/dialog_settings.xml
+M	.metadata/version.ini
+D	Java_Training/build/classes/com/finserv/basics/Assignment.class
+D	Java_Training/build/classes/com/finserv/basics/Circle.class
+D	Java_Training/build/classes/com/finserv/basics/Rectangle.class
+D	Java_Training/build/classes/com/finserv/basics/Shape.class
+D	Java_Training/build/classes/com/finserv/basics/Square.class
+D	Java_Training/build/classes/com/finserv/basics/TestAssignment.class
+M	Java_Training/build/classes/com/finserv/exceptions/TestExcepQ1.class
+D	Java_Training/src/main/java/com/finserv/basics/Assignment.java
+D	Java_Training/src/main/java/com/finserv/basics/Circle.java
+D	Java_Training/src/main/java/com/finserv/basics/Rectangle.java
+D	Java_Training/src/main/java/com/finserv/basics/Shape.java
+D	Java_Training/src/main/java/com/finserv/basics/Square.java
+D	Java_Training/src/main/java/com/finserv/basics/TestAssignment.java
+M	Java_Training/src/main/java/com/finserv/exceptions/TestExcepQ1.java
+Switched to branch 'B1'
+Your branch is up to date with 'origin/B1'.
+L-W4PWN9XC2K:finserv venkatateja$ ls 
+Encapsulation	assignmentDay4	collections	git
+assignmentDay3	basics		exceptions
+L-W4PWN9XC2K:finserv venkatateja$ git checkout main
+M	.metadata/.log
+D	.metadata/.plugins/org.eclipse.core.resources/.projects/.org.eclipse.egit.core.cmp/.markers.snap
+D	.metadata/.plugins/org.eclipse.core.resources/.projects/.org.eclipse.egit.core.cmp/.syncinfo.snap
+M	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.indexes/e4/b9/22/81/5f/95/history.index
+M	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.indexes/e4/b9/22/81/5f/fb/history.index
+M	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.indexes/e4/b9/22/81/5f/fc/history.index
+M	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.markers
+D	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.markers.snap
+D	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.syncinfo.snap
+M	.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index
+D	.metadata/.plugins/org.eclipse.core.resources/.root/.markers.snap
+D	.metadata/.plugins/org.eclipse.core.resources/.root/3.tree
+M	.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources
+D	.metadata/.plugins/org.eclipse.core.resources/3.snap
+M	.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.debug.ui.prefs
+M	.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.ui.prefs
+M	.metadata/.plugins/org.eclipse.debug.ui/launchConfigurationHistory.xml
+M	.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
+M	.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
+M	.metadata/.plugins/org.eclipse.jdt.core/2993761514.index
+M	.metadata/.plugins/org.eclipse.jdt.ui/QualifiedTypeNameHistory.xml
+M	.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/0.png
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/1.png
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/2.png
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/3.png
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/4.png
+M	.metadata/.plugins/org.eclipse.m2e.logback/0.log
+M	.metadata/.plugins/org.eclipse.pde.core/.cache/clean-cache.properties
+M	.metadata/.plugins/org.eclipse.ui.workbench/dialog_settings.xml
+M	.metadata/version.ini
+D	Java_Training/build/classes/com/finserv/basics/Assignment.class
+D	Java_Training/build/classes/com/finserv/basics/Circle.class
+D	Java_Training/build/classes/com/finserv/basics/Rectangle.class
+D	Java_Training/build/classes/com/finserv/basics/Shape.class
+D	Java_Training/build/classes/com/finserv/basics/Square.class
+D	Java_Training/build/classes/com/finserv/basics/TestAssignment.class
+M	Java_Training/build/classes/com/finserv/exceptions/TestExcepQ1.class
+D	Java_Training/src/main/java/com/finserv/basics/Assignment.java
+D	Java_Training/src/main/java/com/finserv/basics/Circle.java
+D	Java_Training/src/main/java/com/finserv/basics/Rectangle.java
+D	Java_Training/src/main/java/com/finserv/basics/Shape.java
+D	Java_Training/src/main/java/com/finserv/basics/Square.java
+D	Java_Training/src/main/java/com/finserv/basics/TestAssignment.java
+M	Java_Training/src/main/java/com/finserv/exceptions/TestExcepQ1.java
+Switched to branch 'main'
+L-W4PWN9XC2K:finserv venkatateja$ ls
+Encapsulation	assignmentDay4	collections	git
+assignmentDay3	basics		exceptions
+L-W4PWN9XC2K:finserv venkatateja$ git branch -d B1
+Deleted branch B1 (was fc1232c).
+L-W4PWN9XC2K:finserv venkatateja$ git branch
+* main
+L-W4PWN9XC2K:finserv venkatateja$ git branch b1;
+L-W4PWN9XC2K:finserv venkatateja$ git branch
+  b1
+* main
+L-W4PWN9XC2K:finserv venkatateja$ git checkout b1
+M	.metadata/.log
+D	.metadata/.plugins/org.eclipse.core.resources/.projects/.org.eclipse.egit.core.cmp/.markers.snap
+D	.metadata/.plugins/org.eclipse.core.resources/.projects/.org.eclipse.egit.core.cmp/.syncinfo.snap
+M	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.indexes/e4/b9/22/81/5f/95/history.index
+M	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.indexes/e4/b9/22/81/5f/fb/history.index
+M	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.indexes/e4/b9/22/81/5f/fc/history.index
+M	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.markers
+D	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.markers.snap
+D	.metadata/.plugins/org.eclipse.core.resources/.projects/Java_Training/.syncinfo.snap
+M	.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index
+D	.metadata/.plugins/org.eclipse.core.resources/.root/.markers.snap
+D	.metadata/.plugins/org.eclipse.core.resources/.root/3.tree
+M	.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources
+D	.metadata/.plugins/org.eclipse.core.resources/3.snap
+M	.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.debug.ui.prefs
+M	.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.jdt.ui.prefs
+M	.metadata/.plugins/org.eclipse.debug.ui/launchConfigurationHistory.xml
+M	.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
+M	.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
+M	.metadata/.plugins/org.eclipse.jdt.core/2993761514.index
+M	.metadata/.plugins/org.eclipse.jdt.ui/QualifiedTypeNameHistory.xml
+M	.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/0.png
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/1.png
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/2.png
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/3.png
+D	.metadata/.plugins/org.eclipse.jdt.ui/jdt-images/4.png
+M	.metadata/.plugins/org.eclipse.m2e.logback/0.log
+M	.metadata/.plugins/org.eclipse.pde.core/.cache/clean-cache.properties
+M	.metadata/.plugins/org.eclipse.ui.workbench/dialog_settings.xml
+M	.metadata/version.ini
+D	Java_Training/build/classes/com/finserv/basics/Assignment.class
+D	Java_Training/build/classes/com/finserv/basics/Circle.class
+D	Java_Training/build/classes/com/finserv/basics/Rectangle.class
+D	Java_Training/build/classes/com/finserv/basics/Shape.class
+D	Java_Training/build/classes/com/finserv/basics/Square.class
+D	Java_Training/build/classes/com/finserv/basics/TestAssignment.class
+M	Java_Training/build/classes/com/finserv/exceptions/TestExcepQ1.class
+D	Java_Training/src/main/java/com/finserv/basics/Assignment.java
+D	Java_Training/src/main/java/com/finserv/basics/Circle.java
+D	Java_Training/src/main/java/com/finserv/basics/Rectangle.java
+D	Java_Training/src/main/java/com/finserv/basics/Shape.java
+D	Java_Training/src/main/java/com/finserv/basics/Square.java
+D	Java_Training/src/main/java/com/finserv/basics/TestAssignment.java
+M	Java_Training/src/main/java/com/finserv/exceptions/TestExcepQ1.java
+Switched to branch 'b1'
+L-W4PWN9XC2K:finserv venkatateja$ ls
+Encapsulation	assignmentDay4	collections	git
+assignmentDay3	basics		exceptions
+L-W4PWN9XC2K:finserv venkatateja$ cd git
+L-W4PWN9XC2K:git venkatateja$ ls
+DemoText		Git_Training		Welcome.java
+Dev1_Ex.java		Web-Technologies
+L-W4PWN9XC2K:git venkatateja$ git add Demotext.txt
+fatal: pathspec 'Demotext.txt' did not match any files
+L-W4PWN9XC2K:git venkatateja$ git add Demotext
+L-W4PWN9XC2K:git venkatateja$ git status
+On branch B1
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.DS_Store
+	DemoText
+	Git_Training/
+	Web-Technologies/
+
+nothing added to commit but untracked files present (use "git add" to track)
+L-W4PWN9XC2K:git venkatateja$ git add DemoText
+L-W4PWN9XC2K:git venkatateja$ touch DemoText
+L-W4PWN9XC2K:git venkatateja$ git status
+On branch B1
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   DemoText
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.DS_Store
+	Git_Training/
+	Web-Technologies/
+
+L-W4PWN9XC2K:git venkatateja$ git add DemoText
+L-W4PWN9XC2K:git venkatateja$ git commit -m "Second Commit"
+[B1 b872a85] Second Commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 DemoText
+L-W4PWN9XC2K:git venkatateja$ 
+L-W4PWN9XC2K:git venkatateja$ git push
+fatal: The current branch B1 has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin B1
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+L-W4PWN9XC2K:git venkatateja$ git push origin main
+Everything up-to-date
+L-W4PWN9XC2K:git venkatateja$ git push --set-upstream origin B1
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 316 bytes | 316.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: Create a pull request for 'B1' on GitHub by visiting:
+remote:      https://github.com/HaraTeja45/Demo/pull/new/B1
+remote: 
+To https://github.com/HaraTeja45/Demo.git
+ * [new branch]      B1 -> B1
+branch 'B1' set up to track 'origin/B1'.
+L-W4PWN9XC2K:git venkatateja$ git branch B2
+L-W4PWN9XC2K:git venkatateja$ touch file3.txt
+L-W4PWN9XC2K:git venkatateja$ git status
+On branch B1
+Your branch is up to date with 'origin/B1'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.DS_Store
+	Git_Training/
+	Web-Technologies/
+	file3.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+L-W4PWN9XC2K:git venkatateja$ cd git
+-bash: cd: git: No such file or directory
+L-W4PWN9XC2K:git venkatateja$ ls
+DemoText		Git_Training		Welcome.java
+Dev1_Ex.java		Web-Technologies	file3.txt
+L-W4PWN9XC2K:git venkatateja$ touch file3.txt
+L-W4PWN9XC2K:git venkatateja$ git status
+On branch B1
+Your branch is up to date with 'origin/B1'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.DS_Store
+	Git_Training/
+	Web-Technologies/
+	file3.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+L-W4PWN9XC2K:git venkatateja$ git add file3.txt
+L-W4PWN9XC2K:git venkatateja$ git commit-m "Third File"
+git: 'commit-m' is not a git command. See 'git --help'.
+
+The most similar command is
+	commit-tree
+L-W4PWN9XC2K:git venkatateja$ git commit -m "Third File"
+[B1 95f04c2] Third File
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file3.txt
+L-W4PWN9XC2K:git venkatateja$ git branch
+* B1
+  B2
+  main
+L-W4PWN9XC2K:git venkatateja$ git branch B1 B2
+fatal: a branch named 'B1' already exists
+L-W4PWN9XC2K:git venkatateja$ git commit -m "Third File"
+On branch B1
+Your branch is ahead of 'origin/B1' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.DS_Store
+	Git_Training/
+	Web-Technologies/
+
+nothing added to commit but untracked files present (use "git add" to track)
+L-W4PWN9XC2K:git venkatateja$ git push B1 B2
+fatal: 'B1' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+L-W4PWN9XC2K:git venkatateja$ git push B2
+fatal: 'B2' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+L-W4PWN9XC2K:git venkatateja$ git push B1
+fatal: 'B1' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+L-W4PWN9XC2K:git venkatateja$ git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 269 bytes | 269.00 KiB/s, done.
+Total 3 (delta 1), reused 1 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/HaraTeja45/Demo.git
+   b872a85..95f04c2  B1 -> B1
+L-W4PWN9XC2K:git venkatateja$ git push B2
+fatal: 'B2' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+L-W4PWN9XC2K:git venkatateja$ git push branch B2
+fatal: 'branch' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+L-W4PWN9XC2K:git venkatateja$ git merge B1
+Already up to date.
+L-W4PWN9XC2K:git venkatateja$ git push --set-upstream origin B2
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: Create a pull request for 'B2' on GitHub by visiting:
+remote:      https://github.com/HaraTeja45/Demo/pull/new/B2
+remote: 
+To https://github.com/HaraTeja45/Demo.git
+ * [new branch]      B2 -> B2
+branch 'B2' set up to track 'origin/B2'.
+L-W4PWN9XC2K:git venkatateja$ 

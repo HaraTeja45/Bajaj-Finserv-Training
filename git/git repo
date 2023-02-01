@@ -1,0 +1,164 @@
+Last login: Mon Jan 23 11:40:48 on ttys000
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+L-W4PWN9XC2K:~ venkatateja$ cd /Users/venkatateja/eclipse-workspace/Java_Training/src/main/java/com/finserv/git/
+L-W4PWN9XC2K:git venkatateja$ git init -b BFL_Git_Training
+Initialized empty Git repository in /Users/venkatateja/eclipse-workspace/Java_Training/src/main/java/com/finserv/git/.git/
+L-W4PWN9XC2K:git venkatateja$ git add .
+L-W4PWN9XC2K:git venkatateja$ ls
+Git_Training	Welcome.java
+L-W4PWN9XC2K:git venkatateja$ git add Welcome.java
+L-W4PWN9XC2K:git venkatateja$ git commit -m "Welcone.java"
+[BFL_క_Git_Training (root-commit) 843f9aa] Welcone.java
+ 1 file changed, 8 insertions(+)
+ create mode 100644 Welcome.java
+L-W4PWN9XC2K:git venkatateja$ git status
+On branch BFL_క_Git_Training
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.DS_Store
+	Git_Training/
+
+nothing added to commit but untracked files present (use "git add" to track)
+L-W4PWN9XC2K:git venkatateja$ git add <Welcome.java>
+-bash: syntax error near unexpected token `newline'
+L-W4PWN9XC2K:git venkatateja$ git add "Welcome.java"
+L-W4PWN9XC2K:git venkatateja$ git commit
+On branch BFL_క_Git_Training
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.DS_Store
+	Git_Training/
+
+nothing added to commit but untracked files present (use "git add" to track)
+L-W4PWN9XC2K:git venkatateja$ git commit  ""commitedc
+error: pathspec 'commitedc' did not match any file(s) known to git
+L-W4PWN9XC2K:git venkatateja$ git commit  "commited"
+error: pathspec 'commited' did not match any file(s) known to git
+L-W4PWN9XC2K:git venkatateja$ ls
+Git_Training	Welcome.java
+L-W4PWN9XC2K:git venkatateja$ git add "Welcome.java"
+L-W4PWN9XC2K:git venkatateja$ git commit -m "First commit"
+On branch BFL_క_Git_Training
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.DS_Store
+	Git_Training/
+
+nothing added to commit but untracked files present (use "git add" to track)
+L-W4PWN9XC2K:git venkatateja$ git ls-files
+Welcome.java
+L-W4PWN9XC2K:git venkatateja$ git branch
+* BFL_క_Git_Training
+L-W4PWN9XC2K:git venkatateja$ git branch dev1
+L-W4PWN9XC2K:git venkatateja$ git branch
+* BFL_క_Git_Training
+  dev1
+L-W4PWN9XC2K:git venkatateja$ git checkout dev1
+Switched to branch 'dev1'
+L-W4PWN9XC2K:git venkatateja$ ls
+Git_Training	Welcome.java
+L-W4PWN9XC2K:git venkatateja$ git add Git_Training
+error: 'Git_Training/' does not have a commit checked out
+fatal: adding files failed
+L-W4PWN9XC2K:git venkatateja$ ls
+Git_Training	Welcome.java
+L-W4PWN9XC2K:git venkatateja$ ls
+Dev1_Ex.java	Git_Training	Welcome.java
+L-W4PWN9XC2K:git venkatateja$ git add Dev1_Ex.java
+L-W4PWN9XC2K:git venkatateja$ git status
+On branch dev1
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   Dev1_Ex.java
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.DS_Store
+	Git_Training/
+
+L-W4PWN9XC2K:git venkatateja$ git commit -m "1st commit in dev1"
+[dev1 b0d003e] 1st commit in dev1
+ 1 file changed, 10 insertions(+)
+ create mode 100644 Dev1_Ex.java
+L-W4PWN9XC2K:git venkatateja$ git status
+On branch dev1
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.DS_Store
+	Git_Training/
+
+nothing added to commit but untracked files present (use "git add" to track)
+L-W4PWN9XC2K:git venkatateja$ git ls-files
+Dev1_Ex.java
+Welcome.java
+L-W4PWN9XC2K:git venkatateja$ git branch
+  BFL_క_Git_Training
+* dev1
+L-W4PWN9XC2K:git venkatateja$ git config --global user.name "HaraTeja45"
+L-W4PWN9XC2K:git venkatateja$ git config --global user.email "harateja2002@gmail.com"
+L-W4PWN9XC2K:git venkatateja$ git config --global --list
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+user.name=HaraTeja45
+user.email=harateja2002@gmail.com
+L-W4PWN9XC2K:git venkatateja$ git remote add origin https://github.com/HaraTeja45/BFl_క_Git_Training.git
+L-W4PWN9XC2K:git venkatateja$ git branch -M main
+L-W4PWN9XC2K:git venkatateja$ git push -u origin main
+fatal: unable to access 'https://github.com/HaraTeja45/BFl_క_Git_Training.git/': The requested URL returned error: 400
+L-W4PWN9XC2K:git venkatateja$ git remote add origin https://github.com/HaraTeja45/BFl_-_Git_Training.git
+error: remote origin already exists.
+L-W4PWN9XC2K:git venkatateja$ git push -u origin main
+fatal: unable to access 'https://github.com/HaraTeja45/BFl_క_Git_Training.git/': The requested URL returned error: 400
+L-W4PWN9XC2K:git venkatateja$ git status
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.DS_Store
+	Git_Training/
+
+nothing added to commit but untracked files present (use "git add" to track)
+L-W4PWN9XC2K:git venkatateja$ git branch
+  BFL_క_Git_Training
+* main
+L-W4PWN9XC2K:git venkatateja$ git checkout main
+Already on 'main'
+L-W4PWN9XC2K:git venkatateja$ git ls-files
+Dev1_Ex.java
+Welcome.java
+L-W4PWN9XC2K:git venkatateja$ git branch
+  BFL_క_Git_Training
+* main
+L-W4PWN9XC2K:git venkatateja$ git mv BFL_క-Git_Training BFL_Git_Training
+fatal: bad source, source=BFL_క-Git_Training, destination=BFL_Git_Training
+L-W4PWN9XC2K:git venkatateja$ git branch
+  BFL_క_Git_Training
+* main
+L-W4PWN9XC2K:git venkatateja$ git status
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.DS_Store
+	Git_Training/
+
+nothing added to commit but untracked files present (use "git add" to track)
+L-W4PWN9XC2K:git venkatateja$ git mv "BFL_క-Git_Training" "BFL_Git_Training"
+fatal: bad source, source=BFL_క-Git_Training, destination=BFL_Git_Training
+L-W4PWN9XC2K:git venkatateja$ git status
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.DS_Store
+	Git_Training/
+
+nothing added to commit but untracked files present (use "git add" to track)
+L-W4PWN9XC2K:git venkatateja$ git remote add origin https://github.com/HaraTeja45/BFl_-_Git_Training.git
+error: remote origin already exists.
+L-W4PWN9XC2K:git venkatateja$ git branch -M main
+L-W4PWN9XC2K:git venkatateja$ git push -u origin main
+fatal: unable to access 'https://github.com/HaraTeja45/BFl_క_Git_Training.git/': The requested URL returned error: 400
+L-W4PWN9XC2K:git venkatateja$ 
